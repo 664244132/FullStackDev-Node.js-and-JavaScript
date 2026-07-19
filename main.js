@@ -29,7 +29,7 @@ app.post("/api/login", async (req, res) => {
         { expiresIn: '1h' }
     );
 
-    res.json({ msg: "login สำเร็จ", token: token });
+    res.json({ msg: "login สำเร็จ", token: token , user: payload});
 });
 
 app.listen(3000, () => {
