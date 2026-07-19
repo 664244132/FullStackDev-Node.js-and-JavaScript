@@ -3,10 +3,11 @@ import db from "./db.js";
 import jwt from "jsonwebtoken";
 import { compare } from "bcrypt";
 import dotenv from "dotenv";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 app.post("/api/login", async (req, res) => {
     const { username, password } = req.body
     console.log(`user : ${username}, password : ${password}`);
