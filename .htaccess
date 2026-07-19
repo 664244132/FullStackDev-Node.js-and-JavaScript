@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# ป้องกันไม่ให้แสดง .php ใน URL (ถ้าพิมพ์ .php มา ให้ redirect ไปแบบไม่มี .php)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# ถ้าระบุชื่อไฟล์ไม่มีนามสกุล และไฟล์ .php มีอยู่จริง ให้ทำงานเสมือนเข้า .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php [L]
